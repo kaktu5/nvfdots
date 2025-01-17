@@ -41,9 +41,9 @@ _: {
         crates.enable = true;
       };
       sql.enable = true;
-      zig.enable = true;
-
+      ts.enable = true;
       wgsl.enable = true;
+      zig.enable = true;
     };
   };
 }
