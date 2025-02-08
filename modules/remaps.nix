@@ -16,7 +16,6 @@ _: {
       "J".action = ":m '>+1<CR>gv=gv";
       "K".action = ":m '<-2<CR>gv=gv";
       "y".action = "\"+y";
-      "<leader>o".action = ":'<,'>Sort<CR>";
     };
     visualOnly."<leader>p".action = "\"_dP";
   };

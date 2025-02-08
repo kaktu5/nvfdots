@@ -4,7 +4,6 @@ _: {
       formatOnSave = true;
       lsplines.enable = true;
     };
-
     autocomplete.nvim-cmp = {
       enable = true;
       mappings = {
@@ -15,18 +14,15 @@ _: {
       };
     };
     snippets.luasnip.enable = true;
-
     visuals.fidget-nvim = {
       enable = true;
       setupOpts = {notification.window.winblend = 0;};
     };
-
     languages = {
       enableLSP = true;
       enableFormat = true;
       enableTreesitter = true;
       enableExtraDiagnostics = true;
-
       bash.enable = true;
       clang.enable = true;
       css.enable = true;
@@ -34,12 +30,9 @@ _: {
       html.enable = true;
       lua.enable = true;
       markdown.enable = true;
-      nix.enable = true;
+      nix = {enable = true;} // {lsp.server = "nixd";};
       ocaml.enable = true;
-      rust = {
-        enable = true;
-        crates.enable = true;
-      };
+      rust = {enable = true;} // {crates.enable = true;};
       sql.enable = true;
       ts.enable = true;
       wgsl.enable = true;

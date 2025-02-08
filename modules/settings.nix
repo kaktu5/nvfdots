@@ -20,7 +20,7 @@ _: {
     luaConfigPost =
       # lua
       ''
-        vim.opt.undodir = os.getenv("HOME") .. "/.local/share/nvim/undodir"
+        vim.opt.undodir = os.getenv("HOME") .. "/.local/share/nvf/undodir"
       '';
   };
 }

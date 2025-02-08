@@ -1,7 +1,25 @@
 {pkgs, ...}: {
   vim = {
-    autopairs.nvim-autopairs.enable = true;
-    git.vim-fugitive.enable = true;
+    mini = {
+      comment.enable = true;
+      diff.enable = true;
+      indentscope = {
+        enable = true;
+        setupOpts = {
+          draw = {
+            delay = 0;
+            animation = null;
+          };
+          symbol = "│";
+        };
+      };
+      jump.enable = true;
+      operators.enable = true;
+      pairs.enable = true;
+      splitjoin.enable = true;
+      surround.enable = true;
+      trailspace.enable = true;
+    };
     theme = {
       enable = true;
       name = "tokyonight";
@@ -14,14 +32,24 @@
       nvim-web-devicons.enable = true;
     };
     extraPlugins = with pkgs.vimPlugins; {
-      sort-nvim.package = sort-nvim;
       undotree.package = undotree;
       vim-smoothie.package = vim-smoothie;
       vim-tmux-navigator.package = vim-tmux-navigator;
     };
-    maps.normal."<leader>u" = {
-      action = "vim.cmd.UndotreeToggle";
-      lua = true;
+    maps.normal = {
+      "<leader>u" = {
+        lua = true;
+        action = "vim.cmd.UndotreeToggle";
+      };
+      "<leader>tws" = {
+        lua = true;
+        action = ''
+          function()
+            require('mini.trailspace').trim()
+            require('mini.trailspace').trim_last_lines()
+          end
+        '';
+      };
     };
   };
 }
