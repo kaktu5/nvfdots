@@ -1,6 +1,5 @@
 {lib, ...}: let
   inherit (lib.kkts) mkLuaExpr;
-  statusline = ''require("mini.statusline")'';
 in {
   mini.statusline = {
     enable = true;
@@ -9,17 +8,19 @@ in {
       # lua
       ''
         function()
-          local mode, mode_hl = ${statusline}.section_mode({ trunc_width = 120 })
-          local git = ${statusline}.section_git({ trunc_width = 40 })
-          local diff = ${statusline}.section_diff({ trunc_width = 60 })
-          local diagnostics = ${statusline}.section_diagnostics({ trunc_width = 75 })
-          local filename = ${statusline}.section_filename({ trunc_width = 140 })
+          local statusline = require("mini.statusline")
+
+          local mode, mode_hl = statusline.section_mode({ trunc_width = 120 })
+          local git = statusline.section_git({ trunc_width = 40 })
+          local diff = statusline.section_diff({ trunc_width = 60 })
+          local diagnostics = statusline.section_diagnostics({ trunc_width = 75 })
+          local filename = statusline.section_filename({ trunc_width = 140 })
           local location = function()
             return "%l:%v"
           end
-          local search = ${statusline}.section_searchcount({ trunc_width = 75 })
+          local search = statusline.section_searchcount({ trunc_width = 75 })
 
-          return ${statusline}.combine_groups({
+          return statusline.combine_groups({
             { hl = mode_hl, strings = { mode } },
             '%<',
             { hl = 'MiniStatuslineInfo', strings = { filename, git, diff } },

@@ -5,7 +5,6 @@ in {
   mini.starter = {
     enable = true;
     setupOpts = {
-      footer = "";
       items = mkLuaExprs [
         "${starter}.sections.recent_files(8, true)"
         "${starter}.sections.builtin_actions()"
@@ -14,6 +13,7 @@ in {
         ''${starter}.gen_hook.adding_bullet("│ ")''
         ''${starter}.gen_hook.aligning("center", "center")''
       ];
+      footer = "";
     };
   };
   highlight = let
