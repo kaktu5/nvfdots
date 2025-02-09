@@ -30,6 +30,7 @@ _: {
     lua.enable = true;
     markdown.enable = true;
     nix = {enable = true;} // {lsp.server = "nixd";};
+    nu.enable = true;
     ocaml.enable = true;
     rust = {enable = true;} // {crates.enable = true;};
     sql.enable = true;
