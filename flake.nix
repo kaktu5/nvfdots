@@ -13,13 +13,18 @@
   };
   outputs = {self, ...} @ inputs:
     inputs.flake-utils.lib.eachDefaultSystem (system: let
+      lib =
+        inputs.nixpkgs.lib
+        // inputs.nvf.lib
+        // import ./lib;
       pkgs = import inputs.nixpkgs {inherit system;};
     in {
       packages = {
         default = self.packages.${system}.neovim;
         inherit
-          (inputs.nvf.lib.neovimConfiguration {
+          (lib.neovimConfiguration {
             inherit pkgs;
+            extraSpecialArgs = {inherit lib;};
             modules = [./modules];
           })
           neovim

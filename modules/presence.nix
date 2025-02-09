@@ -1,5 +1,5 @@
 {pkgs, ...}: {
-  vim.extraPlugins.presence-nvim = {
+  extraPlugins.presence-nvim = {
     package = pkgs.vimPlugins.presence-nvim;
     setup =
       # lua
