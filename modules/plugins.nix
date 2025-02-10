@@ -28,6 +28,7 @@
     undotree.package = undotree;
     vim-smoothie.package = vim-smoothie;
     vim-sort-motion.package = vim-sort-motion;
+    vim-startuptime.package = vim-startuptime;
     vim-tmux-navigator.package = vim-tmux-navigator;
   };
   extraPackages = with pkgs; [imagemagick luajitPackages.magick];
