@@ -1,4 +1,5 @@
 {
+  config,
   lib,
   pkgs,
   ...
@@ -7,7 +8,9 @@
 in {
   vim =
     foldl (acc: file:
-      recursiveUpdate acc (import file {inherit lib pkgs;}))
+      recursiveUpdate acc (import file {
+        inherit config lib pkgs;
+      }))
     {} [
       ./git.nix
       ./lsp.nix
