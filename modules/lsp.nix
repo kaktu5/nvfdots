@@ -1,4 +1,8 @@
-_: {
+{
+  config',
+  pkgs,
+  ...
+}: {
   lsp = {
     formatOnSave = true;
     lsplines.enable = true;
@@ -23,12 +27,12 @@ _: {
     enableTreesitter = true;
     enableExtraDiagnostics = true;
     assembly.enable = true;
-    bash.enable = true;
+    bash.enable = config'.languages.assembly.enable;
     clang.enable = true;
     css.enable = true;
     haskell.enable = true;
     html.enable = true;
-    lua = {enable = true;} // {lsp.neodev.enable = true;};
+    lua = {enable = true;} // {lsp.lazydev.enable = true;};
     markdown.enable = true;
     nix = {enable = true;} // {lsp.server = "nixd";};
     nu.enable = true;
@@ -39,4 +43,5 @@ _: {
     wgsl.enable = true;
     zig.enable = true;
   };
+  extraPlugins.yuck-vim.package = pkgs.vimPlugins.yuck-vim;
 }

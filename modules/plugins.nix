@@ -39,12 +39,14 @@
     };
     "<leader>tws" = {
       lua = true;
-      action = ''
-        function()
-          require('mini.trailspace').trim()
-          require('mini.trailspace').trim_last_lines()
-        end
-      '';
+      action =
+        # lua
+        ''
+          function()
+            require('mini.trailspace').trim()
+            require('mini.trailspace').trim_last_lines()
+          end
+        '';
     };
   };
 }

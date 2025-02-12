@@ -1,15 +1,18 @@
 {
+  colors,
   config,
+  inputs,
   lib,
   pkgs,
   ...
 }: let
   inherit (lib) foldl recursiveUpdate;
+  config' = config.vim;
 in {
   vim =
     foldl (acc: file:
       recursiveUpdate acc (import file {
-        inherit config lib pkgs;
+        inherit colors config' inputs lib pkgs;
       }))
     {} [
       ./git.nix

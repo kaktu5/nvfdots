@@ -1,4 +1,6 @@
-_: {
+{colors, ...}: let
+  inherit (colors) fg0 purple;
+in {
   telescope = {
     enable = true;
     mappings = {
@@ -21,45 +23,41 @@ _: {
       selection_caret = "▌ ";
     };
   };
-  highlight = let
-    bg = "#000000";
-    fg = "#c0caf5";
-    ac = "#a485dd";
-  in {
-    TelescopeTitle = {inherit bg fg;};
-    TelescopeBorder = {inherit bg fg;};
-    TelescopeNormal = {inherit bg fg;};
-    TelescopeMatching = {inherit bg;} // {fg = ac;};
-    TelescopeMultiIcon = {inherit bg;} // {fg = ac;};
-    TelescopeSelection = {inherit bg;} // {fg = ac;};
-    TelescopePreviewDate = {inherit bg fg;};
-    TelescopePreviewLine = {inherit bg fg;};
-    TelescopePreviewLink = {inherit bg fg;};
-    TelescopePreviewPipe = {inherit bg fg;};
-    TelescopePreviewRead = {inherit bg fg;};
-    TelescopePreviewSize = {inherit bg fg;};
-    TelescopePreviewUser = {inherit bg fg;};
-    TelescopePromptTitle = {inherit bg fg;};
-    TelescopePreviewBlock = {inherit bg fg;};
-    TelescopePreviewGroup = {inherit bg fg;};
-    TelescopePreviewMatch = {inherit bg;} // {fg = ac;};
-    TelescopePreviewTitle = {inherit bg fg;};
-    TelescopePreviewWrite = {inherit bg fg;};
-    TelescopePromptBorder = {inherit bg fg;};
-    TelescopePromptNormal = {inherit bg fg;};
-    TelescopePromptPrefix = {inherit bg fg;};
-    TelescopePreviewBorder = {inherit bg fg;};
-    TelescopePreviewHyphen = {inherit bg fg;};
-    TelescopePreviewNormal = {inherit bg fg;};
-    TelescopePreviewSocket = {inherit bg fg;};
-    TelescopePreviewSticky = {inherit bg fg;};
-    TelescopePromptCounter = {inherit bg fg;};
-    TelescopeMultiSelection = {inherit bg fg;};
-    TelescopePreviewCharDev = {inherit bg fg;};
-    TelescopePreviewExecute = {inherit bg fg;};
-    TelescopePreviewMessage = {inherit bg fg;};
-    TelescopeSelectionCaret = {inherit bg;} // {fg = ac;};
-    TelescopePreviewDirectory = {inherit bg fg;};
-    TelescopePreviewMessageFillchar = {inherit bg fg;};
+  highlight = {
+    TelescopeTitle.fg = fg0;
+    TelescopeBorder.fg = fg0;
+    TelescopeNormal.fg = fg0;
+    TelescopeMatching.fg = purple;
+    TelescopeMultiIcon.fg = purple;
+    TelescopeSelection.fg = purple;
+    TelescopePreviewDate.fg = fg0;
+    TelescopePreviewLine.fg = fg0;
+    TelescopePreviewLink.fg = fg0;
+    TelescopePreviewPipe.fg = fg0;
+    TelescopePreviewRead.fg = fg0;
+    TelescopePreviewSize.fg = fg0;
+    TelescopePreviewUser.fg = fg0;
+    TelescopePromptTitle.fg = fg0;
+    TelescopePreviewBlock.fg = fg0;
+    TelescopePreviewGroup.fg = fg0;
+    TelescopePreviewMatch.fg = purple;
+    TelescopePreviewTitle.fg = fg0;
+    TelescopePreviewWrite.fg = fg0;
+    TelescopePromptBorder.fg = fg0;
+    TelescopePromptNormal.fg = fg0;
+    TelescopePromptPrefix.fg = fg0;
+    TelescopePreviewBorder.fg = fg0;
+    TelescopePreviewHyphen.fg = fg0;
+    TelescopePreviewNormal.fg = fg0;
+    TelescopePreviewSocket.fg = fg0;
+    TelescopePreviewSticky.fg = fg0;
+    TelescopePromptCounter.fg = fg0;
+    TelescopeMultiSelection.fg = fg0;
+    TelescopePreviewCharDev.fg = fg0;
+    TelescopePreviewExecute.fg = fg0;
+    TelescopePreviewMessage.fg = fg0;
+    TelescopeSelectionCaret.fg = purple;
+    TelescopePreviewDirectory.fg = fg0;
+    TelescopePreviewMessageFillchar.fg = fg0;
   };
 }

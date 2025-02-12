@@ -1,4 +1,14 @@
-{lib, ...}: let
+{
+  colors,
+  lib,
+  ...
+}: let
+  inherit
+    (colors)
+    fg0
+    lightPurple
+    purple
+    ;
   inherit (lib.kkts) mkLuaExpr;
   starter = ''require("mini.starter")'';
 in {
@@ -72,6 +82,7 @@ in {
               -- Obsidian actions
               -- local section = "Obsidian action"
               -- table.insert(items, {
+              --
               -- })
 
               -- Builtin actions
@@ -97,19 +108,15 @@ in {
         '';
     };
   };
-  highlight = let
-    bg = "#000000";
-    fg = "#c0caf5";
-    ac = "#a485dd";
-  in {
-    MiniStarterCurrent = {inherit bg fg;};
-    MiniStarterFooter = {inherit bg;} // {fg = ac;};
-    MiniStarterHeader = {inherit bg;} // {fg = ac;};
-    MiniStarterInactive = {inherit bg fg;};
-    MiniStarterItem = {inherit bg fg;};
-    MiniStarterItemBullet = {inherit bg;} // {fg = ac;};
-    MiniStarterItemPrefix = {inherit bg;} // {fg = ac;};
-    MiniStarterSection = {inherit bg;} // {fg = ac;};
-    MiniStarterQuery = {inherit bg;} // {fg = ac;};
+  highlight = {
+    MiniStarterCurrent.fg = fg0;
+    MiniStarterFooter.fg = purple;
+    MiniStarterHeader.fg = purple;
+    MiniStarterInactive.fg = fg0;
+    MiniStarterItem.fg = fg0;
+    MiniStarterItemBullet.fg = purple;
+    MiniStarterItemPrefix.fg = purple;
+    MiniStarterSection.fg = purple;
+    MiniStarterQuery.fg = lightPurple;
   };
 }
