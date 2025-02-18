@@ -1,8 +1,15 @@
-{
-  config',
-  pkgs,
-  ...
-}: {
+{pkgs, ...}: let
+  inherit (pkgs) makeWrapper nixd symlinkJoin;
+  nixd' = symlinkJoin rec {
+    name = "nixd";
+    paths = [nixd];
+    nativeBuildInputs = [makeWrapper];
+    postBuild = ''
+      wrapProgram $out/bin/${name} \
+        --set NIXD_FLAGS "--inlay-hints=true"
+    '';
+  };
+in {
   lsp = {
     formatOnSave = true;
     lsplines.enable = true;
@@ -27,14 +34,14 @@
     enableTreesitter = true;
     enableExtraDiagnostics = true;
     assembly.enable = true;
-    bash.enable = config'.languages.assembly.enable;
+    bash.enable = true;
     clang.enable = true;
     css.enable = true;
     haskell.enable = true;
     html.enable = true;
     lua = {enable = true;} // {lsp.lazydev.enable = true;};
     markdown.enable = true;
-    nix = {enable = true;} // {lsp.server = "nixd";};
+    nix = {enable = true;} // {lsp = {server = "nixd";} // {package = nixd';};};
     nu.enable = true;
     ocaml.enable = true;
     rust = {enable = true;} // {crates.enable = true;};
