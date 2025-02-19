@@ -33,7 +33,6 @@ in {
     enableFormat = true;
     enableTreesitter = true;
     enableExtraDiagnostics = true;
-    assembly.enable = true;
     bash.enable = true;
     clang.enable = true;
     css.enable = true;
